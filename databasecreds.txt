@@ -1,0 +1,6 @@
+(
+            database='postgres',
+            user='julia',
+            password='password',
+            host='julia2020postgres.coolto6bwhht.us-east-2.rds.amazonaws.com',
+            port='5432'

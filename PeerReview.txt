@@ -1,0 +1,53 @@
+What programming paradigm(s) did they use? Can they provide examples? 
+	They used object-oriented programing, where they instantiaed objects in order to reach methods in other
+classes. Several of their methods were written like the code below, where they are using the object
+BankAccountService in order to access the method get_all_customers.
+
+    @app.route("/clients", methods=['GET'])
+    def get_all_customers():
+        return jsonify(BankAccountService.get_all_customers()), 200
+
+What design patterns did they use? 
+	They used a creational design pattern. They utilized class instantiation and object creation. 
+The design for this particular project mirrored the pattern of the MovieApp Ryan built during training.
+Did they follow the DRY principle? Or are there duplicate parts of the codebase they could refactor? 
+	They did utilize the Don't Repeat Yourself principle. I didn't observe duplicated codebase throughout
+the project. Methods were reached using objects and layers (such as the service or dao layer) only communicted 
+to the layers below them. 
+Did they follow the single-responsibility principle? 
+	They did follow the single-responsibility principle. For example the functions created in the dao layer were
+simple and composable. They could be called as need in the controller layer. 
+Is their code generally readable and maintainable? 
+	This code was generally readable and maintainable.
+Are there any formatting issues – commented out code, unfollowed naming conventions, 
+unnecessary blank space, excessive nesting, etc? 
+	One thing that really stood out to me is that this code was very neat and cleaned up. It was 
+easy to move between the different layers in the code and follow the references. There was no commented 
+out code generally except in the main. I didn't understand why the code was commented out in the main. (see below)
+	import daos.bank_account_dao
+	import models.customer as customer
+	from util.db_connection import connection
+
+	# services = daos.bank_account_dao.BankAccountDAO
+	# customer1 = customer.Customer(0, 'dwayne johnson', '12345', 'email', '1998-07-30', '2430 7th ave')
+	# customer2 = customer.Customer(0, 'dary', '12345', 'email', '1998-07-30', '2430 7th ave')
+	# s = services()
+	# s.create_account(customer1)
+	# # s.create_account(customer2)
+	#
+	# print(services.get_balance())
+	connection.close()
+	Did they handle exceptions and errors gracefully? 
+	I observed successful error handling in the controller layer and in the dao layer.
+Did they hard-code values or did you externalize and make them configurable? 
+	Values were externalized and were pulled from the database in the dao layer using sql commands. 
+The only exception was in the controller layer inside the create_customer method, where the details of customer 1 
+were hard coded. (See Below)
+ 
+def create_customer():
+        customer1 = Customer(0, 'dwayne johnson', '12345', 'email', '1998-07-30', '2430 7th ave')
+        customer = BankAccountService.create_customer(customer1)
+        return jsonify(customer.json()), 201
+
+Did you make any part of the code too complex when it could have been written more simply?
+	The code was neat and easy to read. I don't think it could have been written more simply

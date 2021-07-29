@@ -1,0 +1,14 @@
+Running tests from a terminal
+
+example:
+
+python tests/calc_tests.py
+
+
+Throwing Errors 
+
+try:
+    return float(x) * float(y)
+
+except ValueError:
+    raise CalculatorError("Invalid Inputs")

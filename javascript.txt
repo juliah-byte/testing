@@ -1,0 +1,15 @@
+init abbreviation-sets up html code
+	w/o- code is still valid
+Browsers- false tolerance, make assumptions, when you don't give it what it wants.
+
+Html tags required - 3
+	-html
+	-head
+	-body
+-to add in javascript, we need script tag. 
+
+Truthy falsy values.
+	Values that evaluate to true or false
+	-used as a condition -- if(condition), if(1)
+	-used in type coersion -- 0 == false
+		-everything has to be true or false. 
